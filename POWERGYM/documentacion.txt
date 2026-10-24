@@ -1,0 +1,32 @@
+DOCUMENTACIÓN DEL FRONT-END - POWERGYM
+
+1. Descripción
+PowerGym es una interfaz web responsiva para la gestión de un gimnasio. El prototipo integra una página pública, inicio de sesión y un panel administrativo simulado.
+
+2. Tecnologías utilizadas
+- HTML5: estructura semántica y contenido de las interfaces.
+- CSS3: estilos propios, variables de color, animaciones y ajustes visuales.
+- JavaScript: navegación entre vistas, notificaciones, modales, datos simulados, actualización de indicadores y gráficos.
+- Tailwind CSS y Font Awesome mediante CDN para componentes visuales e iconografía.
+- Chart.js mediante CDN para gráficos del panel administrativo.
+
+3. Usabilidad y diseño
+- Diseño responsivo para dispositivos móviles, tabletas y computadores.
+- Navegación clara mediante menú y botones de acción.
+- Contraste visual entre fondo, texto y botones.
+- Formularios y modales para operaciones simuladas.
+- Mensajes de notificación para informar al usuario sobre acciones realizadas.
+
+4. Estructura del proyecto
+POWERGYM/
+|-- index.html
+|-- css/
+|   `-- styles.css
+|-- js/
+|   `-- script.js
+|-- img/
+|   `-- capturas de pantalla del diseño
+`-- documentacion.txt
+
+5. Observación
+El sistema corresponde a un prototipo front-end. Las operaciones de clientes, membresías, pagos y rutinas utilizan datos simulados y no representan todavía una conexión con una base de datos o API.

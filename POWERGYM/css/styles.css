@@ -1,0 +1,67 @@
+/* Variables corporativas de marca */
+:root {
+    --pg-blue: #0B3D91;
+    --pg-blue-dark: #072457;
+    --pg-blue-light: #1c5ac2;
+    --pg-blue-soft: #f0f5ff;
+    --pg-orange: #FF6B00;
+    --pg-orange-light: #ff8533;
+    --pg-orange-dark: #cc5500;
+    --pg-orange-soft: #fff3eb;
+    --font-poppins: 'Poppins', 'Roboto', sans-serif;
+}
+
+/* Configuraciones globales */
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-poppins);
+}
+
+/* Ocultar scrollbars sin perder funcionalidad */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Fondos y overlays estéticos */
+.gradient-overlay {
+    background: linear-gradient(180deg, rgba(11, 61, 145, 0.85) 0%, rgba(7, 36, 87, 0.95) 100%);
+}
+
+.bg-grid-pattern {
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Animaciones e interactividad */
+.nav-item {
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+    transform: translateX(4px);
+}
+
+#toast-container {
+    pointer-events: none;
+}
+
+#toast-container > div {
+    pointer-events: auto;
+    animation: toast-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toast-slide-in {
+    from {
+        transform: translateY(1rem) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
