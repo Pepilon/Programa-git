@@ -1,2 +1,2 @@
-Nombre: Tu Nombre
-Correo: tu_correo@gmail.com
+Nombre: Andres Osorio
+Correo: pepilon09@gmail.com
