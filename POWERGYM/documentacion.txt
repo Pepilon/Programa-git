@@ -1,12 +1,12 @@
 DOCUMENTACIÓN DEL FRONT-END - POWERGYM
 
 1. Descripción
-PowerGym es una interfaz web responsiva para la gestión de un gimnasio. El prototipo integra una página pública, inicio de sesión y un panel administrativo simulado.
+PowerGym es una aplicación web responsiva para la gestión de un gimnasio. Incluye página pública, acceso por rol y panel de administración, instructor y consulta de cliente.
 
 2. Tecnologías utilizadas
 - HTML5: estructura semántica y contenido de las interfaces.
 - CSS3: estilos propios, variables de color, animaciones y ajustes visuales.
-- JavaScript: navegación entre vistas, notificaciones, modales, datos simulados, actualización de indicadores y gráficos.
+- JavaScript: navegación por rol, notificaciones, formularios, rutinas semanales, planes de alimentación, seguimiento e indicadores.
 - Tailwind CSS y Font Awesome mediante CDN para componentes visuales e iconografía.
 - Chart.js mediante CDN para gráficos del panel administrativo.
 
@@ -14,8 +14,20 @@ PowerGym es una interfaz web responsiva para la gestión de un gimnasio. El prot
 - Diseño responsivo para dispositivos móviles, tabletas y computadores.
 - Navegación clara mediante menú y botones de acción.
 - Contraste visual entre fondo, texto y botones.
-- Formularios y modales para operaciones simuladas.
+- Formularios para crear, editar y eliminar rutinas, alimentos y mediciones.
 - Mensajes de notificación para informar al usuario sobre acciones realizadas.
+- Marca PowerGym local visible incluso si no carga la biblioteca externa de iconos.
+- Catálogo de ejercicios de fuerza y CrossFit organizado por grupos musculares y nivel.
+- Rutinas de 1 a 6 días con ejercicios, series, repeticiones, carga, RPE e intervalos de descanso.
+- Planes de alimentación asignados por cliente, objetivo, día y comida.
+- Comidas configurables con varios alimentos por porción, seleccionados desde grupos de carbohidratos, proteínas, grasas y bebidas/vegetales.
+- Listas desplegables organizadas por objetivo, cliente, día y horario: desayuno, media mañana, almuerzo, media tarde y cena.
+- El perfil del cliente y el panel del personal muestran los siete días; los días sin plan se identifican como pendientes de asignación.
+- La planificación se filtra por perfil; agregar alimentos a un horario existente conserva sus alimentos actuales y no modifica otros días ni comidas.
+- Vista de cliente de solo lectura; los cambios de entrenamiento y alimentación se realizan desde cuentas de personal.
+- Cada cuenta puede actualizar sus datos de contacto y foto de perfil; el rol de acceso permanece administrado por el gimnasio.
+- Cálculo estimado de macros por alimento y cantidad en gramos; validar planes con un profesional.
+- Cuentas iniciales de administrador (admin@powergym.com), instructor (instructor@powergym.com) y cliente (milena@example.com); la clave de acceso inicial es 123456.
 
 4. Estructura del proyecto
 POWERGYM/
@@ -29,4 +41,4 @@ POWERGYM/
 `-- documentacion.txt
 
 5. Observación
-El sistema corresponde a un prototipo front-end. Las operaciones de clientes, membresías, pagos y rutinas utilizan datos simulados y no representan todavía una conexión con una base de datos o API.
+Las rutinas, planes alimentarios y mediciones se guardan en el almacenamiento local del navegador y quedan asociadas al cliente seleccionado. Para operar como servicio real entre dispositivos se requiere conectar una API/base de datos y autenticación segura; la clave inicial y los datos de acceso del front-end no sustituyen un sistema de producción. Clientes, membresías y pagos aún usan datos locales de ejemplo.

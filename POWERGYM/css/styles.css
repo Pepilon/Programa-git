@@ -17,6 +17,26 @@ html {
     font-family: var(--font-poppins);
 }
 
+.powergym-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    background: var(--pg-blue);
+    color: #fff;
+    border: 2px solid var(--pg-orange);
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.powergym-mark-admin {
+    background: var(--pg-orange);
+    border-color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+}
+
 /* Ocultar scrollbars sin perder funcionalidad */
 .no-scrollbar::-webkit-scrollbar {
     display: none;

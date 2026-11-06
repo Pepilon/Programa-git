@@ -55,9 +55,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                 <!-- Logo -->
                 <a href="#" onclick="switchView('landing')" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 bg-pgBlue rounded-xl flex items-center justify-center shadow-lg shadow-pgBlue/20 group-hover:scale-105 transition duration-200">
-                        <i class="fa-solid fa-dumbbell text-white text-lg"></i>
-                    </div>
+                    <div class="powergym-mark w-10 h-10 rounded-xl shadow-lg shadow-pgBlue/20 group-hover:scale-105 transition duration-200" aria-label="Logo PowerGym">PG</div>
                     <div>
                         <span class="text-xl font-black text-pgBlue tracking-tight block">POWER<span class="text-pgOrange">GYM</span></span>
                         <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold block -mt-1">Premium Club</span>
@@ -102,7 +100,7 @@
                         Empieza Hoy <i class="fa-solid fa-arrow-right ml-2"></i>
                     </a>
                     <button onclick="switchView('login')" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl text-base border border-white/20 transition backdrop-blur-sm">
-                        Probar Demo Admin
+                        Ingresar a mi cuenta
                     </button>
                 </div>
             </div>
@@ -172,64 +170,23 @@
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-pgBlue-dark">Un plan para cada nivel de disciplina</h2>
                 <p class="text-sm text-gray-500 max-w-lg mx-auto">Selecciona tu pase de acceso y únete a la comunidad fitness más activa del país.</p>
             </div>
-            
             <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
-                <!-- Plan Básico -->
                 <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm flex flex-col justify-between relative overflow-hidden transition hover:shadow-xl">
                     <div class="space-y-6">
                         <span class="text-xs font-bold tracking-widest uppercase text-gray-400">PLAN BÁSICO</span>
-                        <div class="flex items-baseline">
-                            <span class="text-4xl font-black text-pgBlue-dark">$80.000</span>
-                            <span class="text-xs text-gray-400 ml-1">/ mes</span>
-                        </div>
+                        <div class="flex items-baseline"><span class="text-4xl font-black text-pgBlue-dark">$80.000</span><span class="text-xs text-gray-400 ml-1">/ mes</span></div>
                         <hr class="border-gray-100">
-                        <ul class="space-y-3 text-xs text-gray-500">
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Acceso a zona de cardio y fuerza</li>
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Lockers públicos de uso diario</li>
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Evaluación física inicial</li>
-                            <li class="text-gray-300 line-through"><i class="fa-solid fa-xmark mr-2 text-gray-300"></i> Acceso a todas las sedes</li>
-                            <li class="text-gray-300 line-through"><i class="fa-solid fa-xmark mr-2 text-gray-300"></i> Clases grupales premium</li>
-                        </ul>
+                        <ul class="space-y-3 text-xs text-gray-500"><li><i class="fa-solid fa-check text-green-500 mr-2"></i> Acceso a zona de cardio y fuerza</li><li><i class="fa-solid fa-xmark text-gray-300 mr-2"></i> Acceso a todas las sedes</li><li><i class="fa-solid fa-xmark text-gray-300 mr-2"></i> Clases grupales premium</li></ul>
                     </div>
                     <button onclick="switchView('login')" class="mt-8 w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 rounded-xl text-xs transition">Seleccionar Plan</button>
                 </div>
-                <!-- Plan Premium -->
-                <div class="bg-pgBlue text-white rounded-3xl p-8 border border-pgBlue-dark shadow-xl flex flex-col justify-between relative overflow-hidden transform scale-105">
+                <div class="bg-pgBlue text-white rounded-3xl p-8 border border-pgBlue-dark shadow-xl flex flex-col justify-between relative overflow-hidden transform md:scale-105">
                     <div class="absolute top-4 right-4 bg-pgOrange text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">RECOMENDADO</div>
-                    <div class="space-y-6">
-                        <span class="text-xs font-bold tracking-widest uppercase text-pgOrange">PLAN PREMIUM</span>
-                        <div class="flex items-baseline text-white">
-                            <span class="text-4xl font-black">$120.000</span>
-                            <span class="text-xs text-blue-200 ml-1">/ mes</span>
-                        </div>
-                        <hr class="border-white/10">
-                        <ul class="space-y-3 text-xs text-blue-100">
-                            <li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Acceso ilimitado a zona de cardio y fuerza</li>
-                            <li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Lockers públicos de uso diario</li>
-                            <li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Acceso a todas las sedes nacionales</li>
-                            <li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Clases grupales ilimitadas</li>
-                            <li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Plan nutricional semestral</li>
-                        </ul>
-                    </div>
+                    <div class="space-y-6"><span class="text-xs font-bold tracking-widest uppercase text-pgOrange">PLAN PREMIUM</span><div class="flex items-baseline"><span class="text-4xl font-black">$120.000</span><span class="text-xs text-blue-200 ml-1">/ mes</span></div><hr class="border-white/20"><ul class="space-y-3 text-xs text-blue-100"><li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Acceso ilimitado a cardio y fuerza</li><li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Acceso a todas las sedes</li><li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Clases grupales ilimitadas</li><li><i class="fa-solid fa-check text-pgOrange mr-2"></i> Plan nutricional semestral</li></ul></div>
                     <button onclick="switchView('login')" class="mt-8 w-full bg-pgOrange hover:bg-pgOrange-light text-white font-bold py-3 rounded-xl text-xs transition shadow-md shadow-pgOrange/30">Adquirir Ahora</button>
                 </div>
-                <!-- Plan Elite -->
                 <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm flex flex-col justify-between relative overflow-hidden transition hover:shadow-xl">
-                    <div class="space-y-6">
-                        <span class="text-xs font-bold tracking-widest uppercase text-gray-400">PLAN ELITE</span>
-                        <div class="flex items-baseline">
-                            <span class="text-4xl font-black text-pgBlue-dark">$180.000</span>
-                            <span class="text-xs text-gray-400 ml-1">/ mes</span>
-                        </div>
-                        <hr class="border-gray-100">
-                        <ul class="space-y-3 text-xs text-gray-500">
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Acceso multi-sede Premium VIP</li>
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Entrenador personalizado (4 sesiones/mes)</li>
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Invitado gratis permanente</li>
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Zona húmeda & SPA incluida</li>
-                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Descuentos en cafetería y tienda</li>
-                        </ul>
-                    </div>
+                    <div class="space-y-6"><span class="text-xs font-bold tracking-widest uppercase text-gray-400">PLAN ELITE</span><div class="flex items-baseline"><span class="text-4xl font-black text-pgBlue-dark">$180.000</span><span class="text-xs text-gray-400 ml-1">/ mes</span></div><hr class="border-gray-100"><ul class="space-y-3 text-xs text-gray-500"><li><i class="fa-solid fa-check text-green-500 mr-2"></i> Acceso multi-sede Premium VIP</li><li><i class="fa-solid fa-check text-green-500 mr-2"></i> Entrenador personalizado (4 sesiones/mes)</li><li><i class="fa-solid fa-check text-green-500 mr-2"></i> Invitado gratis permanente</li><li><i class="fa-solid fa-check text-green-500 mr-2"></i> Zona húmeda & SPA incluida</li><li><i class="fa-solid fa-check text-green-500 mr-2"></i> Descuentos en cafetería y tienda</li></ul></div>
                     <button onclick="switchView('login')" class="mt-8 w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 rounded-xl text-xs transition">Seleccionar Plan</button>
                 </div>
             </div>
@@ -359,19 +316,17 @@
                         <i class="fa-solid fa-chevron-left text-[8px]"></i> Volver a la web
                     </div>
                     <div class="flex justify-center mb-1">
-                        <div class="w-12 h-12 bg-pgBlue rounded-2xl flex items-center justify-center shadow-lg shadow-pgBlue/25">
-                            <i class="fa-solid fa-dumbbell text-white text-xl"></i>
-                        </div>
+                        <div class="powergym-mark w-12 h-12 rounded-2xl shadow-lg shadow-pgBlue/25" aria-label="Logo PowerGym">PG</div>
                     </div>
                     <h2 class="text-2xl font-extrabold text-pgBlue-dark">Iniciar Sesión</h2>
-                    <p class="text-xs text-gray-400">Accede al panel administrativo de Power Gym.</p>
+                    <p class="text-xs text-gray-400">Accede a tu espacio de entrenamiento Power Gym.</p>
                 </div>
 
-                <!-- Credenciales demo -->
                 <div class="bg-pgBlue/5 border border-pgBlue/10 rounded-2xl p-4 text-xs space-y-1 text-pgBlue">
-                    <span class="font-bold block uppercase tracking-wider text-[9px] text-pgBlue-dark">Credenciales de Acceso Demo:</span>
-                    <div class="flex justify-between"><span>Usuario:</span> <strong class="select-all">admin@powergym.com</strong></div>
-                    <div class="flex justify-between"><span>Clave:</span> <strong class="select-all">123456</strong></div>
+                    <span class="font-bold block uppercase tracking-wider text-[9px] text-pgBlue-dark">Cuentas del sistema · clave inicial: 123456</span>
+                    <div class="flex justify-between"><span>Administrador:</span> <strong class="select-all">admin@powergym.com</strong></div>
+                    <div class="flex justify-between"><span>Instructor:</span> <strong class="select-all">instructor@powergym.com</strong></div>
+                    <div class="flex justify-between"><span>Cliente:</span> <strong class="select-all">milena@example.com</strong></div>
                 </div>
 
                 <form onsubmit="handleLogin(event)" class="space-y-4">
@@ -385,7 +340,7 @@
                     <div class="space-y-1">
                         <div class="flex justify-between">
                             <label class="text-[10px] uppercase font-bold text-gray-400 block">Contraseña</label>
-                            <a href="#" onclick="triggerNotification('Se ha enviado un enlace de recuperación a su correo.', 'info')" class="text-[10px] text-pgOrange font-bold hover:underline">¿Olvidaste tu contraseña?</a>
+                            <a href="#" onclick="triggerNotification('Solicita al administrador del gimnasio la actualización de tus datos de acceso.', 'info')" class="text-[10px] text-pgOrange font-bold hover:underline">¿Necesitas ayuda para entrar?</a>
                         </div>
                         <div class="relative">
                             <i class="fa-solid fa-lock absolute left-4 top-3.5 text-gray-400"></i>
@@ -401,7 +356,7 @@
 
                 <hr class="border-gray-100">
                 <div class="text-center">
-                    <button onclick="triggerNotification('Módulo de registro deshabilitado en versión de pruebas.', 'info')" class="text-xs text-gray-500 font-medium hover:text-pgBlue hover:underline">Crear una cuenta nueva</button>
+                    <span class="text-xs text-gray-500 font-medium">Las cuentas de clientes son asignadas por el gimnasio.</span>
                 </div>
             </div>
         </div>
@@ -415,9 +370,7 @@
         <aside class="w-full md:w-64 bg-pgBlue-dark text-white flex flex-col shadow-xl z-30 shrink-0">
             <div class="p-6 border-b border-white/10 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 bg-pgOrange rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-dumbbell text-white text-base"></i>
-                    </div>
+                    <div class="powergym-mark powergym-mark-admin w-9 h-9 rounded-lg" aria-label="Logo PowerGym">PG</div>
                     <div>
                         <span class="text-base font-black text-white tracking-tight block">POWER<span class="text-pgOrange">GYM</span></span>
                         <span class="text-[9px] uppercase tracking-widest text-pgOrange font-bold block -mt-1">ADMINISTRATIVO</span>
@@ -443,6 +396,12 @@
                 <a href="#" onclick="switchAdminPanel('rutinas')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl transition text-sm font-medium hover:bg-white/10" id="sidebar-rutinas">
                     <i class="fa-solid fa-person-running w-5"></i> Rutinas
                 </a>
+                <a href="#" onclick="switchAdminPanel('nutricion')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl transition text-sm font-medium hover:bg-white/10" id="sidebar-nutricion">
+                    <i class="fa-solid fa-apple-whole w-5"></i> Nutrición y seguimiento
+                </a>
+                <a href="#" onclick="switchAdminPanel('mi-plan')" class="nav-item hidden flex items-center gap-3 px-4 py-3 rounded-xl transition text-sm font-medium hover:bg-white/10" id="sidebar-mi-plan">
+                    <i class="fa-solid fa-calendar-check w-5"></i> Mis planes
+                </a>
                 <a href="#" onclick="switchAdminPanel('perfil')" class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl transition text-sm font-medium hover:bg-white/10" id="sidebar-perfil">
                     <i class="fa-solid fa-user-gear w-5"></i> Mi Perfil
                 </a>
@@ -451,14 +410,14 @@
 
             <div class="p-4 border-t border-white/10 bg-[#061e4a] flex items-center justify-between gap-2">
                 <div class="flex items-center gap-2.5">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Andrés" class="w-8 h-8 rounded-full object-cover border border-white/20">
+                    <img id="sidebar-user-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Foto de perfil" class="profile-avatar w-8 h-8 rounded-full object-cover border border-white/20">
                     <div class="leading-none">
-                        <span class="text-xs font-bold block">Andrés Felipe</span>
-                        <span class="text-[9px] text-gray-400 block mt-0.5">Administrador</span>
+                        <span id="sidebar-user-name" class="text-xs font-bold block">Andrés Felipe</span>
+                        <span id="sidebar-user-role" class="text-[9px] text-gray-400 block mt-0.5">Administrador</span>
                     </div>
                 </div>
-                <button onclick="handleLogout()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-red-500/20 hover:text-red-400 transition flex items-center justify-center text-xs" title="Cerrar sesión">
-                    <i class="fa-solid fa-power-off"></i>
+                <button onclick="handleLogout()" class="rounded-lg bg-white/5 hover:bg-red-500/20 hover:text-red-400 transition flex items-center justify-center gap-2 px-3 py-2 text-xs font-bold" title="Cerrar sesión">
+                    <i class="fa-solid fa-power-off" aria-hidden="true"></i><span>Salir</span>
                 </button>
             </div>
         </aside>
@@ -468,13 +427,19 @@
             <!-- Admin Top Bar -->
             <header class="bg-white border-b border-gray-100 h-16 flex items-center justify-between px-6 shrink-0 z-20 shadow-sm">
                 <div class="flex items-center gap-4">
+                    <button onclick="toggleMobileSidebar()" class="md:hidden bg-pgBlue/5 hover:bg-pgBlue/10 text-pgBlue rounded-lg px-3 py-2 text-xs font-bold flex items-center gap-2" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars" aria-hidden="true"></i><span>Menú</span>
+                    </button>
                     <span class="text-xs font-semibold text-gray-400" id="admin-current-date">Fecha cargando...</span>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2 cursor-pointer" onclick="switchAdminPanel('perfil')">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Andrés" class="w-8 h-8 rounded-full object-cover">
-                        <span class="text-xs font-bold text-pgBlue-dark hidden sm:inline">Andrés Felipe Osorio Aguirre</span>
+                        <img id="header-user-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Foto de perfil" class="profile-avatar w-8 h-8 rounded-full object-cover">
+                        <span id="admin-user-name" class="text-xs font-bold text-pgBlue-dark hidden sm:inline">Andrés Felipe Osorio Aguirre</span>
                     </div>
+                    <button onclick="handleLogout()" class="bg-red-50 hover:bg-red-100 text-red-600 font-bold px-3 py-2 rounded-lg text-xs transition flex items-center gap-2" aria-label="Cerrar sesión">
+                        <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i><span>Cerrar sesión</span>
+                    </button>
                 </div>
             </header>
 
@@ -584,10 +549,6 @@
                         </div>
                         <div class="p-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 bg-gray-50/50">
                             <span>Mostrando <strong id="clientes-range">1-6</strong> de <strong id="clientes-total">6</strong> registros</span>
-                            <div class="flex gap-2">
-                                <button onclick="triggerNotification('Módulo de paginación simulado', 'info')" class="px-3 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition">Anterior</button>
-                                <button onclick="triggerNotification('Módulo de paginación simulado', 'info')" class="px-3 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition">Siguiente</button>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -721,142 +682,111 @@
                 </section>
 
                 <!-- ==================== PANTALLA 7: GESTIÓN DE RUTINAS ==================== -->
-                <section id="panel-rutinas" class="admin-view hidden p-6 md:p-8 space-y-6 flex-1">
+                <section id="panel-rutinas" class="admin-view hidden p-6 md:p-8 space-y-8 flex-1">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <h3 class="text-3xl font-extrabold text-pgBlue-dark">Gestión de Rutinas</h3>
-                            <p class="text-xs text-gray-500">Planifica, asocia y diseña planes de carga y volumen.</p>
+                            <p class="text-sm text-gray-500">Planes completos de fuerza, acondicionamiento y CrossFit.</p>
                         </div>
-                        <button onclick="openModal('rutina-modal')" class="bg-pgBlue hover:bg-pgBlue-light text-white font-bold px-5 py-3 rounded-xl text-xs tracking-wider transition uppercase flex items-center gap-2 shadow-md">
-                            <i class="fa-solid fa-person-running"></i> Crear Rutina
+                        <button onclick="openModal('rutina-modal')" class="bg-pgBlue hover:bg-pgBlue-light text-white font-bold px-5 py-3 rounded-xl text-sm transition flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-plus" aria-hidden="true"></i> Crear rutina
                         </button>
                     </div>
-
-                    <div class="grid lg:grid-cols-12 gap-8 items-start">
-                        <div class="lg:col-span-8 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                            <div class="p-5 border-b border-gray-100">
-                                <h4 class="font-bold text-sm text-pgBlue-dark">Historial de Planificación</h4>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left border-collapse">
-                                    <thead class="bg-gray-50 border-b border-gray-100">
-                                        <tr class="text-[10px] uppercase tracking-wider font-extrabold text-gray-400">
-                                            <th class="px-6 py-4">Cliente</th>
-                                            <th class="px-6 py-4">Objetivo</th>
-                                            <th class="px-6 py-4">Entrenador</th>
-                                            <th class="px-6 py-4">Duración</th>
-                                            <th class="px-6 py-4">Estado</th>
-                                            <th class="px-6 py-4 text-right">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-gray-100 text-xs" id="rutinas-table-body"></tbody>
-                                </table>
-                            </div>
+                    <section class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-gray-100"><h4 class="font-bold text-base text-pgBlue-dark">Rutinas asignadas</h4></div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse min-w-[900px]">
+                                <thead class="bg-gray-50 border-b border-gray-100"><tr class="text-xs uppercase tracking-wider font-extrabold text-gray-400">
+                                    <th class="px-5 py-4">Cliente</th><th class="px-5 py-4">Objetivo</th><th class="px-5 py-4">Entrenador</th><th class="px-5 py-4">Duración</th><th class="px-5 py-4">Días/semana</th><th class="px-5 py-4">Ejercicios</th><th class="px-5 py-4 text-right">Acciones</th>
+                                </tr></thead>
+                                <tbody class="divide-y divide-gray-100 text-sm" id="rutinas-table-body"></tbody>
+                            </table>
                         </div>
+                    </section>
+                    <section class="space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+                            <div><h4 class="text-xl font-extrabold text-pgBlue-dark">Biblioteca de ejercicios</h4><p class="text-sm text-gray-500">Explora por grupo muscular o por nivel de CrossFit. Añade ejercicios al plan desde aquí.</p></div>
+                            <input id="exercise-search" type="search" oninput="renderExerciseCatalog()" placeholder="Buscar ejercicio..." class="w-full sm:w-72 bg-white border border-gray-200 px-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-pgBlue" aria-label="Buscar ejercicios">
+                        </div>
+                        <div id="exercise-catalog" class="space-y-3"></div>
+                    </section>
+                </section>
 
-                        <div class="lg:col-span-4 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6">
-                            <h4 class="font-extrabold text-sm text-pgBlue-dark border-b border-gray-100 pb-3 flex items-center gap-2"><i class="fa-solid fa-dumbbell text-pgOrange"></i> Caja de Ejercicios</h4>
-                            <div class="space-y-3">
-                                <div onclick="triggerNotification('Detalles del ejercicio: Sentadilla con barra - 4 Series x 10 Reps.', 'success')" class="cursor-pointer flex items-center justify-between p-3.5 bg-gray-50 rounded-xl hover:bg-pgBlue/5 hover:border-pgBlue/20 border border-transparent transition">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-9 h-9 bg-pgOrange/10 text-pgOrange rounded-lg flex items-center justify-center text-sm"><i class="fa-solid fa-dumbbell"></i></div>
-                                        <div>
-                                            <h5 class="font-bold text-xs text-gray-800">Sentadilla con Barra</h5>
-                                            <span class="text-[9px] text-gray-400 uppercase font-medium">Tren Inferior</span>
-                                        </div>
-                                    </div>
-                                    <span class="text-[10px] bg-white border border-gray-200 px-2.5 py-1 rounded-lg text-gray-500 font-bold">RPE 8</span>
-                                </div>
-                                <div onclick="triggerNotification('Detalles del ejercicio: Press de Banca - 4 Series x 8 Reps.', 'success')" class="cursor-pointer flex items-center justify-between p-3.5 bg-gray-50 rounded-xl hover:bg-pgBlue/5 hover:border-pgBlue/20 border border-transparent transition">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-9 h-9 bg-pgBlue/10 text-pgBlue rounded-lg flex items-center justify-center text-sm"><i class="fa-solid fa-dumbbell"></i></div>
-                                        <div>
-                                            <h5 class="font-bold text-xs text-gray-800">Press de Banca Plano</h5>
-                                            <span class="text-[9px] text-gray-400 uppercase font-medium">Pecho / Empuje</span>
-                                        </div>
-                                    </div>
-                                    <span class="text-[10px] bg-white border border-gray-200 px-2.5 py-1 rounded-lg text-gray-500 font-bold">RPE 9</span>
-                                </div>
-                                <div onclick="triggerNotification('Detalles del ejercicio: Peso Muerto - 3 Series x 5 Reps.', 'success')" class="cursor-pointer flex items-center justify-between p-3.5 bg-gray-50 rounded-xl hover:bg-pgBlue/5 hover:border-pgBlue/20 border border-transparent transition">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-9 h-9 bg-emerald-500/10 text-emerald-600 rounded-lg flex items-center justify-center text-sm"><i class="fa-solid fa-dumbbell"></i></div>
-                                        <div>
-                                            <h5 class="font-bold text-xs text-gray-800">Peso Muerto Convencional</h5>
-                                            <span class="text-[9px] text-gray-400 uppercase font-medium">Cadena Posterior</span>
-                                        </div>
-                                    </div>
-                                    <span class="text-[10px] bg-white border border-gray-200 px-2.5 py-1 rounded-lg text-gray-500 font-bold">RPE 9.5</span>
-                                </div>
-                            </div>
+                <section id="panel-nutricion" class="admin-view hidden p-6 md:p-8 space-y-8 flex-1">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div><h3 class="text-3xl font-extrabold text-pgBlue-dark">Nutrición y seguimiento</h3><p class="text-sm text-gray-500">Planes editables por objetivo y registro de progreso.</p></div>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="openNutritionModal()" class="bg-pgBlue hover:bg-pgBlue-light text-white font-bold px-4 py-3 rounded-xl text-sm transition flex items-center gap-2"><i class="fa-solid fa-plus" aria-hidden="true"></i> Planificar comida</button>
+                            <button onclick="openTrackingModal()" class="bg-pgOrange hover:bg-pgOrange-light text-white font-bold px-4 py-3 rounded-xl text-sm transition flex items-center gap-2"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Registrar seguimiento</button>
                         </div>
                     </div>
+                    <p class="rounded-xl border border-pgOrange/20 bg-pgOrange/5 px-4 py-3 text-xs text-gray-600">Los macros son estimaciones por alimento y cantidad; las necesidades individuales deben ser revisadas por un profesional de nutrición.</p>
+                    <section class="space-y-3">
+                        <div class="grid sm:grid-cols-2 gap-3 rounded-xl border border-gray-100 bg-white p-4">
+                            <label class="space-y-1 text-sm font-bold text-gray-500">Perfil del cliente<select id="nutrition-profile-client" onchange="renderNutritionPlans()" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></select></label>
+                            <label class="space-y-1 text-sm font-bold text-gray-500">Objetivo del plan<select id="nutrition-profile-goal" onchange="renderNutritionPlans()" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"><option value="Todos">Todos los objetivos</option><option>Déficit</option><option>Mantenimiento</option><option>Superávit</option></select></label>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3"><h4 id="nutrition-profile-heading" class="text-xl font-extrabold text-pgBlue-dark">Semana de alimentación</h4><button id="nutrition-profile-add" type="button" onclick="openNutritionModalForClient()" class="rounded-lg bg-pgBlue px-4 py-2.5 text-sm font-bold text-white hover:bg-pgBlue-light">Planificar comida para este perfil</button></div>
+                        <div id="nutrition-plans" class="space-y-3"></div>
+                    </section>
+                    <section class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-gray-100"><h4 class="font-extrabold text-base text-pgBlue-dark">Seguimiento de progreso</h4></div>
+                        <div class="overflow-x-auto"><table class="w-full text-left min-w-[700px]"><thead class="bg-gray-50"><tr class="text-xs uppercase text-gray-400"><th class="px-5 py-4">Fecha</th><th class="px-5 py-4">Cliente</th><th class="px-5 py-4">Peso</th><th class="px-5 py-4">Cintura</th><th class="px-5 py-4">Grasa corporal</th><th class="px-5 py-4 text-right">Acciones</th></tr></thead><tbody id="tracking-table-body" class="divide-y divide-gray-100 text-sm"></tbody></table></div>
+                    </section>
+                </section>
+
+                <section id="panel-mi-plan" class="admin-view hidden p-6 md:p-8 space-y-8 flex-1">
+                    <div><h3 class="text-3xl font-extrabold text-pgBlue-dark">Mis planes</h3><p id="client-plan-subtitle" class="text-sm text-gray-500">Rutina y alimentación asignadas por tu entrenador.</p></div>
+                    <section class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-gray-100"><h4 class="font-extrabold text-base text-pgBlue-dark">Rutina semanal</h4></div>
+                        <div id="client-workout-plan" class="p-5 space-y-4"></div>
+                    </section>
+                    <section class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <div class="p-5 border-b border-gray-100"><h4 class="font-extrabold text-base text-pgBlue-dark">Plan de alimentación</h4></div>
+                        <div id="client-food-plan" class="p-5 space-y-4"></div>
+                    </section>
                 </section>
 
                 <!-- ==================== PANTALLA 8: PERFIL DE USUARIO ==================== -->
                 <section id="panel-perfil" class="admin-view hidden p-6 md:p-8 space-y-8 flex-1">
-                    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden max-w-4xl mx-auto">
-                        <div class="h-40 bg-gradient-to-r from-pgBlue via-pgBlue-light to-pgOrange relative">
-                            <div class="absolute inset-0 bg-white/10 bg-grid-pattern"></div>
-                        </div>
-                        <div class="p-8 relative">
-                            <div class="absolute -top-16 left-8">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Avatar Andrés" class="w-28 h-28 rounded-full border-4 border-white object-cover shadow-lg">
-                            </div>
-                            <div class="pt-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-gray-100 pb-8">
-                                <div class="space-y-1">
-                                    <h3 class="text-2xl font-extrabold text-pgBlue-dark">Andrés Felipe Osorio Aguirre</h3>
-                                    <p class="text-sm text-gray-500 flex items-center gap-2">
-                                        <span class="inline-block bg-pgOrange/10 text-pgOrange px-2.5 py-0.5 rounded-lg text-xs font-bold">Administrador General</span>
-                                        <span>• Sede El Poblado</span>
-                                    </p>
-                                </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="triggerNotification('Módulo de actualización no disponible en versión demo.', 'info')" class="bg-pgBlue hover:bg-pgBlue-light text-white font-bold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 shadow-md">
-                                        <i class="fa-regular fa-pen-to-square"></i> Editar Perfil
-                                    </button>
-                                    <button onclick="triggerNotification('Se ha enviado enlace de restablecimiento a tu correo.', 'success')" class="bg-white border border-gray-200 hover:bg-gray-50 text-gray-600 font-semibold px-4 py-2 rounded-xl text-xs transition">
-                                        Cambiar Contraseña
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="grid md:grid-cols-2 gap-8 pt-8">
-                                <div class="space-y-4">
-                                    <h4 class="text-sm font-bold text-pgBlue-dark uppercase tracking-wider border-b border-gray-100 pb-2">Información de Contacto</h4>
-                                    <div class="space-y-3 text-xs">
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-400 font-medium">Correo Electrónico:</span>
-                                            <span class="text-gray-800 font-semibold">andres.osorio@powergym.com</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-400 font-medium">Teléfono:</span>
-                                            <span class="text-gray-800 font-semibold">+57 (312) 456-7890</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-400 font-medium">Fecha de Registro:</span>
-                                            <span class="text-gray-800 font-semibold">12 de Enero de 2024</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-400 font-medium">Estado de Cuenta:</span>
-                                            <span class="text-green-500 font-bold flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> Activa</span>
-                                        </div>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden max-w-5xl mx-auto w-full">
+                        <div class="h-36 bg-gradient-to-r from-pgBlue via-pgBlue-light to-pgOrange relative"><div class="absolute inset-0 bg-white/10 bg-grid-pattern"></div></div>
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-col sm:flex-row sm:items-end gap-5 border-b border-gray-100 pb-6">
+                                <div class="flex items-end gap-4">
+                                    <img id="profile-photo-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Foto de perfil" class="h-24 w-24 rounded-full border-4 border-white bg-gray-100 object-cover shadow-lg">
+                                    <div class="space-y-2 pb-1">
+                                        <h3 id="profile-user-name" class="text-2xl font-extrabold text-pgBlue-dark">Andrés Felipe Osorio Aguirre</h3>
+                                        <span id="profile-user-role" class="inline-block bg-pgOrange/10 text-pgOrange px-2.5 py-1 rounded-lg text-xs font-bold">Administrador General</span>
                                     </div>
                                 </div>
-
-                                <div class="bg-pgBlue/5 border border-pgBlue/10 rounded-2xl p-6 space-y-4">
-                                    <h4 class="text-xs font-bold text-pgBlue uppercase tracking-wider">Desempeño Operativo Semanal</h4>
-                                    <div class="grid grid-cols-2 gap-4 text-center">
-                                        <div class="bg-white rounded-xl p-4 border border-gray-100">
-                                            <span class="text-[10px] text-gray-400 uppercase font-medium">Asistencias Atendidas</span>
-                                            <p class="text-xl font-bold text-pgBlue-dark mt-1">1,240</p>
-                                        </div>
-                                        <div class="bg-white rounded-xl p-4 border border-gray-100">
-                                            <span class="text-[10px] text-gray-400 uppercase font-medium">Nuevos Clientes</span>
-                                            <p class="text-xl font-bold text-pgOrange mt-1">42</p>
-                                        </div>
-                                    </div>
+                                <div class="sm:ml-auto">
+                                    <input id="profile-photo-file" type="file" accept="image/png,image/jpeg,image/webp" onchange="previewProfilePhoto(event)" class="sr-only">
+                                    <div class="flex flex-wrap gap-2"><label for="profile-photo-file" class="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-pgBlue/20 px-4 py-2.5 text-sm font-bold text-pgBlue hover:bg-pgBlue/5">Cambiar foto</label><button type="button" onclick="removeProfilePhoto()" class="rounded-lg border border-gray-200 px-4 py-2.5 text-sm font-bold text-gray-600 hover:bg-gray-50">Quitar foto</button></div>
                                 </div>
                             </div>
+                            <form id="profile-form" onsubmit="saveUserProfile(event)" class="grid lg:grid-cols-[1fr_280px] gap-8 pt-7">
+                                <div class="space-y-5">
+                                    <h4 class="text-sm font-bold uppercase text-pgBlue-dark">Información personal</h4>
+                                    <div class="grid sm:grid-cols-2 gap-4">
+                                        <label class="space-y-1 text-sm font-semibold text-gray-600">Nombre completo<input id="profile-name-input" required maxlength="80" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 font-normal text-gray-900 focus:border-pgBlue focus:outline-none"></label>
+                                        <label class="space-y-1 text-sm font-semibold text-gray-600">Correo electrónico<input id="profile-email-input" type="email" required maxlength="120" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 font-normal text-gray-900 focus:border-pgBlue focus:outline-none"></label>
+                                        <label class="space-y-1 text-sm font-semibold text-gray-600">Teléfono<input id="profile-phone-input" type="tel" maxlength="30" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 font-normal text-gray-900 focus:border-pgBlue focus:outline-none"></label>
+                                        <label class="space-y-1 text-sm font-semibold text-gray-600">Sede<input id="profile-location-input" maxlength="80" class="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 font-normal text-gray-900 focus:border-pgBlue focus:outline-none"></label>
+                                    </div>
+                                    <p class="text-xs text-gray-500">El rol de la cuenta lo administra el gimnasio y no se puede cambiar desde este perfil.</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <button type="submit" class="rounded-lg bg-pgBlue px-5 py-3 text-sm font-bold text-white hover:bg-pgBlue-light">Guardar cambios</button>
+                                        <button type="button" onclick="resetProfileForm()" class="rounded-lg border border-gray-200 px-5 py-3 text-sm font-bold text-gray-600 hover:bg-gray-50">Descartar</button>
+                                    </div>
+                                </div>
+                                <aside class="rounded-xl border border-pgBlue/10 bg-pgBlue/5 p-5 space-y-3">
+                                    <h4 class="text-sm font-bold text-pgBlue-dark">Datos de cuenta</h4>
+                                    <p class="text-xs text-gray-600">Fecha de registro: <strong id="profile-created-at" class="text-gray-800"></strong></p>
+                                    <p class="text-xs text-gray-600">Estado: <strong class="text-green-700">Activa</strong></p>
+                                    <p class="text-xs text-gray-500">Tu foto se ajusta automáticamente para mostrarse en el menú y en la barra superior.</p>
+                                </aside>
+                            </form>
                         </div>
                     </div>
                 </section>
@@ -871,7 +801,7 @@
         </div>
     </div>
 
-    <!-- ==================== MODALES COMPARTIDOS (CRUD SIMULADO) ==================== -->
+    <!-- ==================== MODALES COMPARTIDOS ==================== -->
     <!-- Modal Clientes -->
     <div id="cliente-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-gray-950/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative border border-gray-100">
@@ -972,33 +902,104 @@
 
     <!-- Modal Rutinas -->
     <div id="rutina-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-gray-950/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative border border-gray-100">
-            <button onclick="closeModal('rutina-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="font-extrabold text-lg text-pgBlue-dark">Planificar Rutina</h3>
-            <form onsubmit="registrarRutina(event)" class="space-y-3 text-xs">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-5 shadow-2xl relative border border-gray-100 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('rutina-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xs font-bold">Cerrar</button>
+            <h3 id="modal-rutina-titulo" class="font-extrabold text-xl text-pgBlue-dark">Planificar rutina</h3>
+            <form id="rutina-form" onsubmit="registrarRutina(event)" class="space-y-5 text-sm">
                 <div class="space-y-1">
-                    <label class="font-bold text-gray-400 uppercase text-[9px]">Cliente</label>
-                    <select id="modal-rutina-cliente" class="w-full bg-gray-50 border border-gray-200 p-2.5 rounded-lg focus:ring-1 focus:ring-pgBlue"></select>
+                    <label class="font-bold text-gray-500">Cliente</label>
+                    <select id="modal-rutina-cliente" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg focus:ring-1 focus:ring-pgBlue"></select>
                 </div>
                 <div class="space-y-1">
-                    <label class="font-bold text-gray-400 uppercase text-[9px]">Objetivo</label>
-                    <input type="text" id="modal-rutina-objetivo" required placeholder="Ej: Tonificación general y fuerza" class="w-full bg-gray-50 border border-gray-200 p-2.5 rounded-lg focus:ring-1 focus:ring-pgBlue">
+                    <label class="font-bold text-gray-500">Objetivo del plan</label>
+                    <input type="text" id="modal-rutina-objetivo" required placeholder="Ej.: fuerza general y acondicionamiento" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg focus:ring-1 focus:ring-pgBlue">
                 </div>
-                <div class="grid grid-cols-2 gap-3">
+                <div class="grid sm:grid-cols-3 gap-3">
                     <div class="space-y-1">
-                        <label class="font-bold text-gray-400 uppercase text-[9px]">Entrenador</label>
-                        <select id="modal-rutina-trainer" class="w-full bg-gray-50 border border-gray-200 p-2.5 rounded-lg focus:ring-1 focus:ring-pgBlue">
+                        <label class="font-bold text-gray-500">Entrenador</label>
+                        <select id="modal-rutina-trainer" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg focus:ring-1 focus:ring-pgBlue">
                             <option value="Laura Restrepo">Laura Restrepo</option>
                             <option value="Carlos Mendoza">Carlos Mendoza</option>
                             <option value="Felipe Osorio">Felipe Osorio</option>
                         </select>
                     </div>
                     <div class="space-y-1">
-                        <label class="font-bold text-gray-400 uppercase text-[9px]">Duración</label>
-                        <input type="text" id="modal-rutina-duracion" required value="8 Semanas" class="w-full bg-gray-50 border border-gray-200 p-2.5 rounded-lg focus:ring-1 focus:ring-pgBlue">
+                        <label class="font-bold text-gray-500">Duración del plan</label>
+                        <input type="text" id="modal-rutina-duracion" required value="8 semanas" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg focus:ring-1 focus:ring-pgBlue">
                     </div>
+                    <label class="space-y-1 font-bold text-gray-500">Días por semana<select id="routine-days-per-week" onchange="configureRoutineDays()" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"><option value="1">1 día</option><option value="2">2 días</option><option value="3" selected>3 días</option><option value="4">4 días</option><option value="5">5 días</option><option value="6">6 días</option></select></label>
                 </div>
-                <button type="submit" class="w-full bg-pgBlue hover:bg-pgBlue-light text-white font-extrabold py-3 rounded-lg uppercase tracking-wider shadow-md">Asignar Rutina</button>
+                <div class="rounded-xl border border-gray-100 bg-gray-50 p-4 space-y-4">
+                    <div class="grid sm:grid-cols-3 gap-3">
+                        <label class="space-y-1 font-bold text-gray-500">Día<select id="routine-day-select" onchange="cancelRoutineExerciseEdit(); renderRoutineDraft()" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></select></label>
+                        <label class="space-y-1 font-bold text-gray-500">Enfoque del día<input id="routine-day-focus" type="text" placeholder="Pecho y tríceps" oninput="updateRoutineDayFocus()" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                        <label class="space-y-1 font-bold text-gray-500">Grupo muscular / nivel<select id="routine-muscle-select" onchange="populateRoutineExercises()" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></select></label>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <label class="space-y-1 font-bold text-gray-500">Ejercicio<select id="routine-exercise-select" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></select></label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="space-y-1 font-bold text-gray-500">Series<input id="routine-exercise-sets" type="number" min="1" max="20" value="4" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                            <label class="space-y-1 font-bold text-gray-500">Repeticiones<input id="routine-exercise-reps" type="text" value="8-12" placeholder="8-12" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-3 gap-3">
+                        <label class="space-y-1 font-bold text-gray-500">Carga (kg)<input id="routine-exercise-load" type="number" min="0" max="1000" step="0.5" value="0" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                        <label class="space-y-1 font-bold text-gray-500">Intensidad (RPE)<input id="routine-exercise-rpe" type="number" min="1" max="10" step="0.5" value="8" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                        <label class="space-y-1 font-bold text-gray-500">Descanso (seg)<input id="routine-exercise-rest" type="number" min="0" max="900" step="15" value="90" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                    </div>
+                    <button id="routine-add-exercise" type="button" onclick="addStructuredExercise()" class="bg-white border border-pgBlue/20 hover:bg-pgBlue/5 text-pgBlue font-bold px-4 py-3 rounded-lg">Añadir ejercicio al día</button>
+                </div>
+                <div class="space-y-2"><h4 class="font-extrabold text-pgBlue-dark">Vista previa de la semana</h4><div id="routine-draft-list" class="space-y-3"></div></div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="modal-rutina-submit" type="submit" class="flex-1 bg-pgBlue hover:bg-pgBlue-light text-white font-extrabold py-3 rounded-lg shadow-md">Confirmar rutina</button>
+                    <button type="button" onclick="closeModal('rutina-modal')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-5 py-3 rounded-lg">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="nutrition-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-gray-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-3xl w-full p-6 md:p-8 space-y-5 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('nutrition-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xs font-bold">Cerrar</button>
+            <h3 id="nutrition-modal-title" class="font-extrabold text-xl text-pgBlue-dark">Planificar comida</h3>
+            <form id="nutrition-form" onsubmit="saveNutritionPlan(event)" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Cliente<select id="nutrition-client" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></select></label>
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Objetivo<select id="nutrition-goal" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"><option>Déficit</option><option>Mantenimiento</option><option>Superávit</option></select></label>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Día de la semana<select id="nutrition-day" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"><option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option></select></label>
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Tiempo de comida<select id="nutrition-meal" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"><option>Desayuno</option><option>Media mañana</option><option>Almuerzo</option><option>Media tarde</option><option>Cena</option></select></label>
+                </div>
+                <div class="rounded-xl border border-gray-100 bg-gray-50 p-4 space-y-4">
+                    <div class="grid sm:grid-cols-3 gap-3">
+                        <label class="space-y-1 text-sm font-bold text-gray-500">Grupo nutricional<select id="nutrition-category" onchange="populateFoodOptions()" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"><option>Carbohidratos</option><option>Proteínas</option><option>Grasas</option><option>Bebidas y vegetales</option></select></label>
+                        <label class="space-y-1 text-sm font-bold text-gray-500">Alimento<select id="nutrition-food" onchange="updateMacroPreview()" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></select></label>
+                        <label class="space-y-1 text-sm font-bold text-gray-500">Porción (g)<input id="nutrition-grams" type="number" min="1" max="3000" value="100" required oninput="updateMacroPreview()" class="w-full bg-white border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 rounded-xl bg-white p-3 text-center text-xs"><div><span class="block text-gray-500">Carbohidratos</span><strong id="macro-carbs" class="text-pgBlue-dark">0 g</strong></div><div><span class="block text-gray-500">Proteínas</span><strong id="macro-protein" class="text-pgBlue-dark">0 g</strong></div><div><span class="block text-gray-500">Grasas</span><strong id="macro-fat" class="text-pgBlue-dark">0 g</strong></div></div>
+                    <button type="button" onclick="addFoodToMealDraft()" class="bg-white border border-pgBlue/20 hover:bg-pgBlue/5 text-pgBlue font-bold px-4 py-3 rounded-lg">Añadir alimento a esta comida</button>
+                </div>
+                <div class="space-y-2"><h4 class="font-extrabold text-pgBlue-dark">Alimentos de la comida</h4><div id="nutrition-meal-draft" class="space-y-2"></div></div>
+                <div class="grid grid-cols-3 gap-2 rounded-xl bg-pgBlue/5 p-4 text-center text-xs"><div><span class="block text-gray-500">Total carbohidratos</span><strong id="meal-total-carbs" class="text-pgBlue-dark">0 g</strong></div><div><span class="block text-gray-500">Total proteínas</span><strong id="meal-total-protein" class="text-pgBlue-dark">0 g</strong></div><div><span class="block text-gray-500">Total grasas</span><strong id="meal-total-fat" class="text-pgBlue-dark">0 g</strong></div></div>
+                <div class="flex flex-col sm:flex-row gap-3"><button id="nutrition-submit" type="submit" class="flex-1 bg-pgBlue hover:bg-pgBlue-light text-white font-extrabold py-3 rounded-lg">Confirmar comida</button><button type="button" onclick="closeModal('nutrition-modal')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-5 py-3 rounded-lg">Cancelar</button></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="tracking-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-gray-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 md:p-8 space-y-5 shadow-2xl relative">
+            <button onclick="closeModal('tracking-modal')" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xs font-bold">Cerrar</button>
+            <h3 id="tracking-modal-title" class="font-extrabold text-xl text-pgBlue-dark">Registrar seguimiento</h3>
+            <form id="tracking-form" onsubmit="saveTrackingRecord(event)" class="space-y-4">
+                <label class="block space-y-1 text-sm font-bold text-gray-500">Cliente<select id="tracking-client" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></select></label>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Fecha<input id="tracking-date" type="date" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Peso (kg)<input id="tracking-weight" type="number" min="1" max="500" step="0.1" required class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Cintura (cm)<input id="tracking-waist" type="number" min="1" max="300" step="0.1" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                    <label class="space-y-1 text-sm font-bold text-gray-500">Grasa corporal (%)<input id="tracking-fat" type="number" min="1" max="75" step="0.1" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-lg font-normal text-gray-800"></label>
+                </div>
+                <button id="tracking-submit" type="submit" class="w-full bg-pgBlue hover:bg-pgBlue-light text-white font-extrabold py-3 rounded-lg">Guardar seguimiento</button>
             </form>
         </div>
     </div>
