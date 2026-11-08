@@ -21,6 +21,14 @@ public class ConexionBD {
             );
         }
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException(
+                "No se encontró el controlador JDBC de MySQL.", e
+            );
+        }
+
         return DriverManager.getConnection(URL, USUARIO, PASSWORD);
     }
 }
