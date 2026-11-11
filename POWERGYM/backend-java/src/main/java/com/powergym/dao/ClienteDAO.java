@@ -120,28 +120,31 @@ public class ClienteDAO {
         return null;
     }
 
-    // Consulta todos los clientes registrados.
-    public List<Cliente> listarTodos() throws SQLException {
+ // Consulta únicamente los clientes que tienen un usuario activo.
+public List<Cliente> listarTodos() throws SQLException {
 
-        String sql = """
-            SELECT *
-            FROM clientes
-            ORDER BY id_cliente
-            """;
+    String sql = """
+        SELECT c.*
+        FROM clientes c
+        INNER JOIN usuarios u
+            ON c.id_usuario = u.id_usuario
+        WHERE u.estado = 'ACTIVO'
+        ORDER BY c.id_cliente
+        """;
 
-        List<Cliente> clientes = new ArrayList<>();
+    List<Cliente> clientes = new ArrayList<>();
 
-        try (Connection conexion = ConexionBD.obtenerConexion();
-             PreparedStatement consulta = conexion.prepareStatement(sql);
-             ResultSet resultado = consulta.executeQuery()) {
+    try (Connection conexion = ConexionBD.obtenerConexion();
+         PreparedStatement consulta = conexion.prepareStatement(sql);
+         ResultSet resultado = consulta.executeQuery()) {
 
-            while (resultado.next()) {
-                clientes.add(mapearCliente(resultado));
-            }
+        while (resultado.next()) {
+            clientes.add(mapearCliente(resultado));
         }
-
-        return clientes;
     }
+
+    return clientes;
+}
 
     // Actualiza la información de un cliente.
     public boolean actualizar(Cliente cliente) throws SQLException {
