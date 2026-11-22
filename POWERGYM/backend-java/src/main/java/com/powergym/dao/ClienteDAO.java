@@ -3,6 +3,7 @@ package com.powergym.dao;
 
 import com.powergym.conexion.ConexionBD;
 import com.powergym.modelo.Cliente;
+import com.powergym.modelo.ClienteRespuesta;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -197,4 +198,62 @@ public List<Cliente> listarTodos() throws SQLException {
 
         return cliente;
     }
+
+public List<ClienteRespuesta> listarRespuestas() throws SQLException {
+
+    String sql = """
+        SELECT
+            c.id_cliente,
+            c.id_usuario,
+            u.nombre,
+            u.apellido,
+            u.documento,
+            u.email,
+            u.telefono,
+            c.fecha_nacimiento,
+            c.genero,
+            c.peso,
+            c.altura,
+            c.objetivo
+        FROM clientes c
+        INNER JOIN usuarios u
+            ON c.id_usuario = u.id_usuario
+        WHERE u.estado = 'ACTIVO'
+        ORDER BY c.id_cliente
+        """;
+
+    List<ClienteRespuesta> clientes = new ArrayList<>();
+
+    try (Connection conexion = ConexionBD.obtenerConexion();
+         PreparedStatement sentencia = conexion.prepareStatement(sql);
+         ResultSet resultado = sentencia.executeQuery()) {
+
+        while (resultado.next()) {
+            ClienteRespuesta cliente = new ClienteRespuesta();
+
+            cliente.setIdCliente(resultado.getInt("id_cliente"));
+            cliente.setIdUsuario(resultado.getInt("id_usuario"));
+            cliente.setNombre(resultado.getString("nombre"));
+            cliente.setApellido(resultado.getString("apellido"));
+            cliente.setDocumento(resultado.getString("documento"));
+            cliente.setEmail(resultado.getString("email"));
+            cliente.setTelefono(resultado.getString("telefono"));
+
+            java.sql.Date fecha = resultado.getDate("fecha_nacimiento");
+            if (fecha != null) {
+                cliente.setFechaNacimiento(fecha.toLocalDate());
+            }
+
+            cliente.setGenero(resultado.getString("genero"));
+            cliente.setPeso(resultado.getBigDecimal("peso"));
+            cliente.setAltura(resultado.getBigDecimal("altura"));
+            cliente.setObjetivo(resultado.getString("objetivo"));
+
+            clientes.add(cliente);
+        }
+    }
+
+    return clientes;
+}
+
 }

@@ -100,7 +100,7 @@ public class ClienteServlet extends HttpServlet {
                 case "desactivar" -> desactivar(request);
 
                 default -> throw new IllegalArgumentException(
-                        "La acción solicitada no es válida.");
+                        "La acciÃ³n solicitada no es vÃ¡lida.");
             }
 
             response.sendRedirect(
@@ -148,29 +148,43 @@ public class ClienteServlet extends HttpServlet {
         clienteServicio.registrarCompleto(usuario, cliente);
     }
 
-    private void actualizar(HttpServletRequest request)
-            throws SQLException {
 
-        int idCliente = obtenerId(request);
+private void actualizar(HttpServletRequest request)
+        throws SQLException {
 
-        Cliente clienteExistente =
-                clienteServicio.consultar(idCliente);
+    int idCliente = obtenerId(request);
 
-        if (clienteExistente == null) {
-            throw new IllegalArgumentException(
-                    "El cliente no existe.");
-        }
+    Cliente clienteExistente =
+            clienteServicio.consultar(idCliente);
 
-        Cliente cliente = crearCliente(request);
-
-        cliente.setIdCliente(idCliente);
-        cliente.setIdUsuario(clienteExistente.getIdUsuario());
-
-        if (!clienteServicio.actualizar(cliente)) {
-            throw new IllegalArgumentException(
-                    "No se pudo actualizar el cliente.");
-        }
+    if (clienteExistente == null) {
+        throw new IllegalArgumentException(
+                "El cliente no existe.");
     }
+
+    // Construye el usuario con los datos personales.
+    Usuario usuario = new Usuario();
+
+    usuario.setIdUsuario(clienteExistente.getIdUsuario());
+    usuario.setNombre(obtenerTexto(request, "nombre"));
+    usuario.setApellido(obtenerTexto(request, "apellido"));
+    usuario.setDocumento(obtenerTexto(request, "documento"));
+    usuario.setEmail(obtenerTexto(request, "email"));
+    usuario.setTelefono(request.getParameter("telefono"));
+
+    // Construye el perfil fÃ­sico del cliente.
+    Cliente cliente = crearCliente(request);
+
+    cliente.setIdCliente(idCliente);
+    cliente.setIdUsuario(clienteExistente.getIdUsuario());
+
+    // Actualiza ambos registros mediante una transacciÃ³n.
+    if (!clienteServicio.actualizar(usuario, cliente)) {
+        throw new IllegalArgumentException(
+                "No se pudo actualizar el cliente.");
+    }
+}
+
 
     private void desactivar(HttpServletRequest request)
             throws SQLException {

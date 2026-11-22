@@ -1,7 +1,6 @@
 
 package com.powergym.dao;
 
-import com.powergym.conexion.ConexionBD;
 import com.powergym.modelo.Usuario;
 
 import java.sql.Connection;
@@ -36,7 +35,6 @@ public class UsuarioDAO {
             consulta.executeUpdate();
 
             try (ResultSet claves = consulta.getGeneratedKeys()) {
-
                 if (claves.next()) {
                     usuario.setIdUsuario(claves.getInt(1));
                 } else {
@@ -57,13 +55,12 @@ public class UsuarioDAO {
             WHERE email = ?
             """;
 
-        try (Connection conexion = ConexionBD.obtenerConexion();
+        try (Connection conexion = com.powergym.conexion.ConexionBD.obtenerConexion();
              PreparedStatement consulta = conexion.prepareStatement(sql)) {
 
             consulta.setString(1, email);
 
             try (ResultSet resultado = consulta.executeQuery()) {
-
                 if (resultado.next()) {
                     return mapearUsuario(resultado);
                 }
@@ -83,13 +80,12 @@ public class UsuarioDAO {
             WHERE id_usuario = ?
             """;
 
-        try (Connection conexion = ConexionBD.obtenerConexion();
+        try (Connection conexion = com.powergym.conexion.ConexionBD.obtenerConexion();
              PreparedStatement consulta = conexion.prepareStatement(sql)) {
 
             consulta.setInt(1, idUsuario);
 
             try (ResultSet resultado = consulta.executeQuery()) {
-
                 if (resultado.next()) {
                     return mapearUsuario(resultado);
                 }
@@ -97,6 +93,34 @@ public class UsuarioDAO {
         }
 
         return null;
+    }
+
+    // Actualiza los datos personales del usuario dentro de una transacción.
+    public boolean actualizar(Connection conexion, Usuario usuario)
+            throws SQLException {
+
+        String sql = """
+            UPDATE usuarios
+            SET nombre = ?,
+                apellido = ?,
+                documento = ?,
+                email = ?,
+                telefono = ?
+            WHERE id_usuario = ?
+              AND rol = 'CLIENTE'
+            """;
+
+        try (PreparedStatement consulta = conexion.prepareStatement(sql)) {
+
+            consulta.setString(1, usuario.getNombre());
+            consulta.setString(2, usuario.getApellido());
+            consulta.setString(3, usuario.getDocumento());
+            consulta.setString(4, usuario.getEmail());
+            consulta.setString(5, usuario.getTelefono());
+            consulta.setInt(6, usuario.getIdUsuario());
+
+            return consulta.executeUpdate() > 0;
+        }
     }
 
     // Desactiva un usuario sin eliminar sus registros.
@@ -109,32 +133,32 @@ public class UsuarioDAO {
               AND estado = 'ACTIVO'
             """;
 
-        try (Connection conexion = ConexionBD.obtenerConexion();
+        try (Connection conexion = com.powergym.conexion.ConexionBD.obtenerConexion();
              PreparedStatement consulta = conexion.prepareStatement(sql)) {
 
             consulta.setInt(1, idUsuario);
-
             return consulta.executeUpdate() > 0;
         }
     }
-// Reactiva un usuario previamente desactivado.
-public boolean activar(int idUsuario) throws SQLException {
 
-    String sql = """
-        UPDATE usuarios
-        SET estado = 'ACTIVO'
-        WHERE id_usuario = ?
-          AND estado = 'INACTIVO'
-        """;
+    // Reactiva un usuario previamente desactivado.
+    public boolean activar(int idUsuario) throws SQLException {
 
-    try (Connection conexion = ConexionBD.obtenerConexion();
-         PreparedStatement consulta = conexion.prepareStatement(sql)) {
+        String sql = """
+            UPDATE usuarios
+            SET estado = 'ACTIVO'
+            WHERE id_usuario = ?
+              AND estado = 'INACTIVO'
+            """;
 
-        consulta.setInt(1, idUsuario);
+        try (Connection conexion = com.powergym.conexion.ConexionBD.obtenerConexion();
+             PreparedStatement consulta = conexion.prepareStatement(sql)) {
 
-        return consulta.executeUpdate() > 0;
+            consulta.setInt(1, idUsuario);
+            return consulta.executeUpdate() > 0;
+        }
     }
-}
+
     // Convierte un registro de MySQL en un objeto Usuario.
     private Usuario mapearUsuario(ResultSet resultado)
             throws SQLException {

@@ -1,0 +1,27 @@
+﻿# Archivos generados por Maven y Java
+**/target/
+*.class
+*.war
+
+# Dependencias y compilaciones de JavaScript
+**/node_modules/
+**/dist/
+**/dist-ssr/
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Registros
+*.log
+logs/
+
+# Archivos temporales y del sistema
+*.local
+.DS_Store
+Thumbs.db
+
+# Editores
+.idea/
+.vscode/

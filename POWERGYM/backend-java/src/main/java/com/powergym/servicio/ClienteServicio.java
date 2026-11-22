@@ -99,18 +99,55 @@ public class ClienteServicio {
     }
 
     // Actualiza la información de un cliente.
-    public boolean actualizar(Cliente cliente) throws SQLException {
+   public boolean actualizar(Usuario usuario, Cliente cliente)
+        throws SQLException {
 
-        if (cliente == null) {
-            throw new IllegalArgumentException(
-                    "El cliente no puede ser nulo.");
-        }
-
-        validarIdentificador(cliente.getIdCliente());
-        validar(cliente, true);
-
-        return clienteDAO.actualizar(cliente);
+    if (usuario == null || cliente == null) {
+        throw new IllegalArgumentException(
+                "Los datos del usuario y del cliente son obligatorios.");
     }
+
+    validarUsuarioEdicion(usuario);
+    validarIdentificador(cliente.getIdCliente());
+    validar(cliente, true);
+
+    try (Connection conexion = ConexionBD.obtenerConexion()) {
+
+        conexion.setAutoCommit(false);
+
+        try {
+            Cliente clienteActual = clienteDAO.buscarPorId(
+                    cliente.getIdCliente());
+
+            if (clienteActual == null
+                    || clienteActual.getIdUsuario() != usuario.getIdUsuario()) {
+                throw new IllegalArgumentException(
+                        "El cliente no existe o no corresponde al usuario.");
+            }
+
+            if (!usuarioDAO.actualizar(conexion, usuario)) {
+                throw new SQLException(
+                        "No se pudieron actualizar los datos personales.");
+            }
+
+            if (!actualizarPerfil(conexion, cliente)) {
+                throw new SQLException(
+                        "No se pudo actualizar el perfil del cliente.");
+            }
+
+            conexion.commit();
+            return true;
+
+        } catch (SQLException | RuntimeException e) {
+            try {
+                conexion.rollback();
+            } catch (SQLException errorRollback) {
+                e.addSuppressed(errorRollback);
+            }
+            throw e;
+        }
+    }
+        }
 
     // Desactiva un cliente sin eliminar su historial.
     public boolean desactivar(int idCliente) throws SQLException {
@@ -139,6 +176,61 @@ public class ClienteServicio {
 
         return usuarioDAO.activar(cliente.getIdUsuario());
     }
+
+private boolean actualizarPerfil(
+        Connection conexion, Cliente cliente) throws SQLException {
+
+    String sql = """
+        UPDATE clientes
+        SET fecha_nacimiento = ?,
+            genero = ?,
+            peso = ?,
+            altura = ?,
+            objetivo = ?
+        WHERE id_cliente = ?
+        """;
+
+    try (var consulta = conexion.prepareStatement(sql)) {
+
+        consulta.setDate(1, cliente.getFechaNacimiento() == null
+                ? null
+                : java.sql.Date.valueOf(cliente.getFechaNacimiento()));
+
+        consulta.setString(2, cliente.getGenero());
+        consulta.setBigDecimal(3, cliente.getPeso());
+        consulta.setBigDecimal(4, cliente.getAltura());
+        consulta.setString(5, cliente.getObjetivo());
+        consulta.setInt(6, cliente.getIdCliente());
+
+        return consulta.executeUpdate() > 0;
+    }
+}
+
+private void validarUsuarioEdicion(Usuario usuario) {
+
+    if (usuario.getIdUsuario() <= 0) {
+        throw new IllegalArgumentException(
+                "El identificador del usuario no es válido.");
+    }
+
+    validarTexto(usuario.getNombre(), 50, "Nombre");
+    validarTexto(usuario.getApellido(), 50, "Apellido");
+    validarTexto(usuario.getDocumento(), 20, "Documento");
+    validarTexto(usuario.getEmail(), 100, "Correo electrónico");
+
+    if (!usuario.getEmail().matches(
+            "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+        throw new IllegalArgumentException(
+                "El correo electrónico no tiene un formato válido.");
+    }
+
+    if (usuario.getTelefono() != null
+            && usuario.getTelefono().length() > 20) {
+        throw new IllegalArgumentException(
+                "El teléfono no puede superar 20 caracteres.");
+    }
+}
+
 
     // Valida los datos del usuario.
     private void validarUsuario(Usuario usuario) {
