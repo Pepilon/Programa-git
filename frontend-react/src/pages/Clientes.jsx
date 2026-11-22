@@ -1,4 +1,5 @@
-﻿import { useEffect, useMemo, useState } from 'react'
+﻿
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   Search,
   Plus,
@@ -16,6 +17,7 @@ import {
   desactivarCliente,
 } from '../services/clienteService'
 
+// Valores iniciales del formulario de clientes.
 const formularioInicial = {
   nombre: '',
   apellido: '',
@@ -41,7 +43,8 @@ function Clientes() {
   const [error, setError] = useState('')
   const [mensaje, setMensaje] = useState('')
 
-  const cargarClientes = async () => {
+  // Consulta los clientes registrados en el backend.
+  const cargarClientes = useCallback(async () => {
     setCargando(true)
     setError('')
 
@@ -53,12 +56,14 @@ function Clientes() {
     } finally {
       setCargando(false)
     }
-  }
-
-  useEffect(() => {
-    cargarClientes()
   }, [])
 
+  // Carga el listado cuando se abre el módulo.
+  useEffect(() => {
+    cargarClientes()
+  }, [cargarClientes])
+
+  // Filtra los clientes por sus datos principales.
   const clientesFiltrados = useMemo(() => {
     const termino = busqueda.trim().toLowerCase()
 
@@ -77,6 +82,7 @@ function Clientes() {
     )
   }, [clientes, busqueda])
 
+  // Abre el formulario para registrar un cliente.
   const abrirRegistro = () => {
     setClienteEditando(null)
     setFormulario(formularioInicial)
@@ -85,6 +91,7 @@ function Clientes() {
     setModalAbierto(true)
   }
 
+  // Carga los datos del cliente seleccionado en el formulario.
   const abrirEdicion = (cliente) => {
     setClienteEditando(cliente)
 
@@ -107,6 +114,7 @@ function Clientes() {
     setModalAbierto(true)
   }
 
+  // Cierra el formulario y limpia sus datos.
   const cerrarModal = () => {
     if (guardando) return
 
@@ -116,6 +124,7 @@ function Clientes() {
     setError('')
   }
 
+  // Actualiza el estado del formulario según el campo modificado.
   const manejarCambio = (e) => {
     const { name, value } = e.target
 
@@ -125,13 +134,24 @@ function Clientes() {
     }))
   }
 
+  // Registra un cliente nuevo o actualiza uno existente.
   const manejarEnvio = async (e) => {
     e.preventDefault()
     setError('')
     setMensaje('')
 
+    // BCrypt admite contraseñas de máximo 72 bytes UTF-8.
+    if (
+      !clienteEditando &&
+      new TextEncoder().encode(formulario.password).length > 72
+    ) {
+      setError('La contraseña no puede superar los 72 bytes.')
+      return
+    }
+
     setGuardando(true)
 
+    // Prepara los datos antes de enviarlos al backend.
     const datos = {
       nombre: formulario.nombre.trim(),
       apellido: formulario.apellido.trim(),
@@ -173,6 +193,7 @@ function Clientes() {
     }
   }
 
+  // Solicita confirmación antes de desactivar un cliente.
   const manejarDesactivacion = async (cliente) => {
     const confirmar = window.confirm(
       `¿Deseas desactivar a ${cliente.nombre} ${cliente.apellido}?`
@@ -205,14 +226,14 @@ function Clientes() {
           className="clients-primary-button"
           onClick={abrirRegistro}
         >
-          <Plus size={18} />
+          <Plus size={18} aria-hidden="true" />
           Nuevo cliente
         </button>
       </div>
 
       <div className="clients-summary">
         <div className="clients-summary-icon">
-          <Users size={23} />
+          <Users size={23} aria-hidden="true" />
         </div>
         <div>
           <span>Clientes activos</span>
@@ -220,8 +241,17 @@ function Clientes() {
         </div>
       </div>
 
-      {mensaje && <div className="clients-success">{mensaje}</div>}
-      {error && <div className="clients-error">{error}</div>}
+      {mensaje && (
+        <div className="clients-success" role="status" aria-live="polite">
+          {mensaje}
+        </div>
+      )}
+
+      {error && (
+        <div className="clients-error" role="alert">
+          {error}
+        </div>
+      )}
 
       <div className="clients-table-card">
         <div className="clients-table-heading">
@@ -232,10 +262,11 @@ function Clientes() {
 
           <div className="clients-table-actions">
             <div className="clients-search">
-              <Search size={17} />
+              <Search size={17} aria-hidden="true" />
               <input
                 type="search"
                 placeholder="Buscar cliente..."
+                aria-label="Buscar cliente"
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
               />
@@ -246,15 +277,16 @@ function Clientes() {
               className="clients-refresh-button"
               onClick={cargarClientes}
               title="Actualizar listado"
+              aria-label="Actualizar listado de clientes"
               disabled={cargando}
             >
-              <RefreshCw size={17} />
+              <RefreshCw size={17} aria-hidden="true" />
             </button>
           </div>
         </div>
 
         {cargando ? (
-          <div className="clients-empty">
+          <div className="clients-empty" role="status">
             Cargando clientes...
           </div>
         ) : clientesFiltrados.length === 0 ? (
@@ -295,18 +327,20 @@ function Clientes() {
                           type="button"
                           className="clients-edit-button"
                           title="Editar cliente"
+                          aria-label={`Editar a ${cliente.nombre} ${cliente.apellido}`}
                           onClick={() => abrirEdicion(cliente)}
                         >
-                          <Pencil size={16} />
+                          <Pencil size={16} aria-hidden="true" />
                         </button>
 
                         <button
                           type="button"
                           className="clients-delete-button"
                           title="Desactivar cliente"
+                          aria-label={`Desactivar a ${cliente.nombre} ${cliente.apellido}`}
                           onClick={() => manejarDesactivacion(cliente)}
                         >
-                          <UserX size={16} />
+                          <UserX size={16} aria-hidden="true" />
                         </button>
                       </div>
                     </td>
@@ -343,9 +377,9 @@ function Clientes() {
                 className="clients-close-button"
                 onClick={cerrarModal}
                 disabled={guardando}
-                aria-label="Cerrar"
+                aria-label="Cerrar formulario"
               >
-                <X size={20} />
+                <X size={20} aria-hidden="true" />
               </button>
             </div>
 
@@ -360,7 +394,7 @@ function Clientes() {
                     value={formulario.nombre}
                     onChange={manejarCambio}
                     required
-                    maxLength={100}
+                    maxLength={50}
                   />
                 </label>
 
@@ -371,7 +405,7 @@ function Clientes() {
                     value={formulario.apellido}
                     onChange={manejarCambio}
                     required
-                    maxLength={100}
+                    maxLength={50}
                   />
                 </label>
 
@@ -382,7 +416,7 @@ function Clientes() {
                     value={formulario.documento}
                     onChange={manejarCambio}
                     required
-                    maxLength={30}
+                    maxLength={20}
                   />
                 </label>
 
@@ -394,7 +428,7 @@ function Clientes() {
                     value={formulario.email}
                     onChange={manejarCambio}
                     required
-                    maxLength={150}
+                    maxLength={100}
                   />
                 </label>
 
@@ -418,7 +452,7 @@ function Clientes() {
                       value={formulario.password}
                       onChange={manejarCambio}
                       required
-                      minLength={6}
+                      minLength={8}
                       autoComplete="new-password"
                     />
                   </label>
@@ -459,8 +493,8 @@ function Clientes() {
                     name="peso"
                     value={formulario.peso}
                     onChange={manejarCambio}
-                    min="0"
-                    max="999"
+                    min="0.01"
+                    max="999.99"
                     step="0.01"
                   />
                 </label>
@@ -472,8 +506,8 @@ function Clientes() {
                     name="altura"
                     value={formulario.altura}
                     onChange={manejarCambio}
-                    min="0"
-                    max="99"
+                    min="0.01"
+                    max="99.99"
                     step="0.01"
                   />
                 </label>
@@ -484,13 +518,17 @@ function Clientes() {
                     name="objetivo"
                     value={formulario.objetivo}
                     onChange={manejarCambio}
-                    maxLength={250}
+                    maxLength={150}
                     placeholder="Ej. Aumentar masa muscular"
                   />
                 </label>
               </div>
 
-              {error && <div className="clients-error">{error}</div>}
+              {error && (
+                <div className="clients-error" role="alert">
+                  {error}
+                </div>
+              )}
 
               <div className="clients-form-actions">
                 <button
