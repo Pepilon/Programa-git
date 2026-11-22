@@ -1,5 +1,5 @@
 
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   BrowserRouter,
   Routes,
@@ -31,8 +31,37 @@ function MainLayout() {
   const [cargando, setCargando] = useState(true)
   const [errorConexion, setErrorConexion] = useState('')
 
-  // Consulta si existe una sesión activa en el servidor.
-  const verificarSesion = useCallback(async () => {
+  // Consulta la sesión inicial sin actualizar el estado directamente
+  // dentro del efecto.
+  useEffect(() => {
+    let componenteActivo = true
+
+    consultarSesion()
+      .then((usuarioActual) => {
+        if (componenteActivo) {
+          setUsuario(usuarioActual)
+        }
+      })
+      .catch(() => {
+        if (componenteActivo) {
+          setErrorConexion(
+            'No fue posible conectar con el servidor. Verifica que Tomcat esté funcionando.'
+          )
+        }
+      })
+      .finally(() => {
+        if (componenteActivo) {
+          setCargando(false)
+        }
+      })
+
+    return () => {
+      componenteActivo = false
+    }
+  }, [])
+
+  // Permite volver a consultar la sesión si falla la conexión.
+  const verificarSesion = async () => {
     setCargando(true)
     setErrorConexion('')
 
@@ -46,12 +75,7 @@ function MainLayout() {
     } finally {
       setCargando(false)
     }
-  }, [])
-
-  // Verifica la sesión cuando se inicia la aplicación.
-  useEffect(() => {
-    verificarSesion()
-  }, [verificarSesion])
+  }
 
   // Actualiza el estado después de iniciar sesión correctamente.
   const handleLogin = (usuarioAutenticado) => {

@@ -58,10 +58,31 @@ function Clientes() {
     }
   }, [])
 
-  // Carga el listado cuando se abre el módulo.
-  useEffect(() => {
-    cargarClientes()
-  }, [cargarClientes])
+  // Carga los clientes al abrir el módulo.
+useEffect(() => {
+  let componenteActivo = true
+
+  listarClientes()
+    .then((datos) => {
+      if (componenteActivo) {
+        setClientes(Array.isArray(datos) ? datos : [])
+      }
+    })
+    .catch((err) => {
+      if (componenteActivo) {
+        setError(err.message || 'No fue posible cargar los clientes.')
+      }
+    })
+    .finally(() => {
+      if (componenteActivo) {
+        setCargando(false)
+      }
+    })
+
+  return () => {
+    componenteActivo = false
+  }
+}, [])
 
   // Filtra los clientes por sus datos principales.
   const clientesFiltrados = useMemo(() => {

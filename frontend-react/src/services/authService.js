@@ -4,7 +4,7 @@ const API_URL = '/api/auth'
 // Procesa las respuestas del servidor y controla errores de formato.
 async function procesarRespuesta(response) {
   const contenido = await response.text()
-  let data = {}
+  let data
 
   try {
     data = contenido ? JSON.parse(contenido) : {}
