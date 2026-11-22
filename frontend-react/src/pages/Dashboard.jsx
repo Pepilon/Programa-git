@@ -10,40 +10,43 @@ import {
   Activity
 } from 'lucide-react'
 
+// Indicadores ilustrativos. No corresponden a datos reales de MySQL.
 const statistics = [
   {
     title: 'Total de clientes',
     value: '150',
-    description: 'Clientes registrados',
+    description: 'Dato de demostración',
     icon: Users,
     color: 'blue'
   },
   {
     title: 'Entrenadores',
     value: '8',
-    description: 'Personal registrado',
+    description: 'Dato de demostración',
     icon: UserCheck,
     color: 'green'
   },
   {
     title: 'Membresías activas',
     value: '112',
-    description: 'Membresías vigentes',
+    description: 'Dato de demostración',
     icon: CreditCard,
     color: 'purple'
   },
   {
     title: 'Ingresos del mes',
     value: '$8.450.000',
-    description: 'Valor de demostración',
+    description: 'Dato de demostración',
     icon: Wallet,
     color: 'orange'
   }
 ]
 
+// Presenta el resumen general del sistema Power Gym.
 function Dashboard() {
   return (
     <section className="dashboard">
+      {/* Mensaje principal de bienvenida. */}
       <div className="welcome-banner">
         <div>
           <span className="welcome-label">SISTEMA DE GESTIÓN</span>
@@ -56,14 +59,15 @@ function Dashboard() {
         </div>
       </div>
 
+      {/* Indicadores de ejemplo del gimnasio. */}
       <div className="section-heading">
         <div>
           <h2>Resumen general</h2>
-          <p>Indicadores principales del gimnasio</p>
+          <p>Indicadores de demostración, no datos reales</p>
         </div>
 
         <span className="current-period">
-          <CalendarDays size={16} />
+          <CalendarDays size={16} aria-hidden="true" />
           Vista general
         </span>
       </div>
@@ -75,7 +79,7 @@ function Dashboard() {
           return (
             <article className="stat-card" key={item.title}>
               <div className={`stat-icon ${item.color}`}>
-                <Icon size={23} />
+                <Icon size={23} aria-hidden="true" />
               </div>
 
               <div className="stat-information">
@@ -84,27 +88,32 @@ function Dashboard() {
                 <small>{item.description}</small>
               </div>
 
-              <ArrowUpRight className="stat-arrow" size={19} />
+              <ArrowUpRight
+                className="stat-arrow"
+                size={19}
+                aria-hidden="true"
+              />
             </article>
           )
         })}
       </div>
 
+      {/* Información sobre los módulos contemplados en el proyecto. */}
       <div className="dashboard-bottom">
         <article className="dashboard-card activity-card">
           <div className="card-heading">
             <div>
               <h3>Actividad del gimnasio</h3>
-              <p>Resumen de los módulos disponibles</p>
+              <p>Áreas contempladas en el proyecto</p>
             </div>
-            <Activity size={22} />
+            <Activity size={22} aria-hidden="true" />
           </div>
 
           <div className="activity-item">
             <span className="activity-dot blue-dot"></span>
             <div>
               <strong>Gestión de clientes</strong>
-              <p>Registro y administración de usuarios</p>
+              <p>Registro, consulta, edición y desactivación implementados.</p>
             </div>
           </div>
 
@@ -112,7 +121,7 @@ function Dashboard() {
             <span className="activity-dot green-dot"></span>
             <div>
               <strong>Control de membresías</strong>
-              <p>Seguimiento de planes y vencimientos</p>
+              <p>Módulo contemplado, pendiente de desarrollo.</p>
             </div>
           </div>
 
@@ -120,18 +129,19 @@ function Dashboard() {
             <span className="activity-dot purple-dot"></span>
             <div>
               <strong>Seguimiento deportivo</strong>
-              <p>Rutinas y evaluaciones físicas</p>
+              <p>Rutinas y evaluaciones contempladas en el proyecto.</p>
             </div>
           </div>
         </article>
 
+        {/* Información general del propósito de la plataforma. */}
         <article className="dashboard-card system-card">
           <div className="card-heading">
             <div>
               <h3>Power Gym</h3>
               <p>Plataforma de administración</p>
             </div>
-            <TrendingUp size={22} />
+            <TrendingUp size={22} aria-hidden="true" />
           </div>
 
           <div className="system-message">

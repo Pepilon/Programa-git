@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Dumbbell, LockKeyhole, Mail } from 'lucide-react'
 import { iniciarSesion } from '../services/authService'
 
+// Componente encargado de autenticar a los usuarios de Power Gym.
 function Login({ onLogin }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -12,6 +13,7 @@ function Login({ onLogin }) {
 
   const navigate = useNavigate()
 
+  // Envía las credenciales al backend y controla la respuesta.
   const handleSubmit = async (event) => {
     event.preventDefault()
     setError('')
@@ -19,9 +21,12 @@ function Login({ onLogin }) {
 
     try {
       const usuario = await iniciarSesion(email, password)
+
+      // Actualiza el usuario autenticado y redirige al panel principal.
       onLogin(usuario)
       navigate('/', { replace: true })
     } catch (err) {
+      // Muestra el mensaje recibido cuando falla la autenticación.
       setError(err.message)
     } finally {
       setLoading(false)
@@ -40,7 +45,7 @@ function Login({ onLogin }) {
 
         <label htmlFor="email">Correo electrónico</label>
         <div className="login-input">
-          <Mail size={19} />
+          <Mail size={19} aria-hidden="true" />
           <input
             id="email"
             type="email"
@@ -54,7 +59,7 @@ function Login({ onLogin }) {
 
         <label htmlFor="password">Contraseña</label>
         <div className="login-input">
-          <LockKeyhole size={19} />
+          <LockKeyhole size={19} aria-hidden="true" />
           <input
             id="password"
             type="password"
@@ -66,7 +71,11 @@ function Login({ onLogin }) {
           />
         </div>
 
-        {error && <div className="login-error">{error}</div>}
+        {error && (
+          <div className="login-error" role="alert">
+            {error}
+          </div>
+        )}
 
         <button type="submit" disabled={loading}>
           {loading ? 'Ingresando...' : 'Iniciar sesión'}

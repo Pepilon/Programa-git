@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   BrowserRouter,
   Routes,
@@ -22,6 +22,7 @@ import {
 
 import './App.css'
 
+// Controla la sesión y la navegación principal de la aplicación.
 function MainLayout() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -30,7 +31,8 @@ function MainLayout() {
   const [cargando, setCargando] = useState(true)
   const [errorConexion, setErrorConexion] = useState('')
 
-  const verificarSesion = async () => {
+  // Consulta si existe una sesión activa en el servidor.
+  const verificarSesion = useCallback(async () => {
     setCargando(true)
     setErrorConexion('')
 
@@ -44,40 +46,20 @@ function MainLayout() {
     } finally {
       setCargando(false)
     }
-  }
-
-  useEffect(() => {
-    let activo = true
-
-    consultarSesion()
-      .then((usuarioActual) => {
-        if (activo) {
-          setUsuario(usuarioActual)
-        }
-      })
-      .catch(() => {
-        if (activo) {
-          setErrorConexion(
-            'No fue posible conectar con el servidor. Verifica que Tomcat esté funcionando.'
-          )
-        }
-      })
-      .finally(() => {
-        if (activo) {
-          setCargando(false)
-        }
-      })
-
-    return () => {
-      activo = false
-    }
   }, [])
 
+  // Verifica la sesión cuando se inicia la aplicación.
+  useEffect(() => {
+    verificarSesion()
+  }, [verificarSesion])
+
+  // Actualiza el estado después de iniciar sesión correctamente.
   const handleLogin = (usuarioAutenticado) => {
     setUsuario(usuarioAutenticado)
     setErrorConexion('')
   }
 
+  // Cierra la sesión en el servidor y regresa al inicio.
   const handleLogout = async () => {
     try {
       await cerrarSesion()
@@ -88,6 +70,7 @@ function MainLayout() {
     }
   }
 
+  // Define los títulos y subtítulos de las páginas.
   const pageTitles = {
     '/': {
       title: 'Panel principal',
@@ -127,10 +110,12 @@ function MainLayout() {
     }
   }
 
+  // Muestra una pantalla mientras se verifica la sesión.
   if (cargando) {
     return <div className="auth-loading">Verificando sesión...</div>
   }
 
+  // Permite volver a consultar la sesión si falla la conexión.
   if (errorConexion) {
     return (
       <div className="auth-loading">
@@ -142,12 +127,14 @@ function MainLayout() {
     )
   }
 
+  // Si no hay una sesión activa, muestra el inicio de sesión.
   if (!usuario) {
     return <Login onLogin={handleLogin} />
   }
 
   const currentPage = pageTitles[location.pathname] || pageTitles['/']
 
+  // Estructura principal para usuarios autenticados.
   return (
     <div className="app-container">
       <div className="sidebar-wrapper">
@@ -177,6 +164,7 @@ function MainLayout() {
   )
 }
 
+// Configura el enrutamiento general de Power Gym.
 function App() {
   return (
     <BrowserRouter>
